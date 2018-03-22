@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ed6fe44ef9dd844b0be544fd95d06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textureRender: {fileID: 562089092}
 --- !u!1 &562089091
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +200,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0d18b75ee53a58341aaf8e8a7f1a1ce7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
