@@ -16,7 +16,11 @@ public static class Noise {  // were not attaching this to any object, no need M
             {
                 float sampleX = x / scale;
                 float sampleY = y / scale;
+
+                float perlinValue = Mathf.PerlinNoise(sampleX, sampleY);
+                noiseMap[x, y] = perlinValue;
             }
         }
+        return noiseMap;
     }
 }
