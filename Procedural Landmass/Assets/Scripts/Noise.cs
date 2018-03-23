@@ -14,11 +14,31 @@ public static class Noise {  // were not attaching this to any object, no need M
         {
             for (int x = 0; x < mapWidth; x++)
             {
-                float sampleX = x / scale;
-                float sampleY = y / scale;
+                float amplitude = 1;
+                float frequency = 1;
+                float noiseHeight =0;
+  
 
-                float perlinValue = Mathf.PerlinNoise(sampleX, sampleY);
-                noiseMap[x, y] = perlinValue;
+                for (int i=0; i < octaves; i++)
+                {
+                    //frequency to take effect
+                    //multiplying our sample coordinates by it
+                    float sampleX = x / scale * frequency;
+                    float sampleY = y / scale * frequency;
+
+                    //higher frequncy, further apart the sample points
+                    //height values will change more rapidly
+                     
+                    float perlinValue = Mathf.PerlinNoise(sampleX, sampleY);
+                    //del noiseMap[,]
+                    //increase noise height by perlin value of each octave
+                    noiseHeight += perlinValue * amplitude;
+
+                    //amplitude decreases each octive
+                    //lacunarity increases each octave
+                    amplitude *= persistance;
+                    frequency *= lacunarity;
+                }
             }
         }
         return noiseMap;
