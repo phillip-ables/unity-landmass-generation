@@ -27,7 +27,6 @@ public static class Noise {  // were not attaching this to any object, no need M
                     float sampleX = x / scale * frequency;
                     float sampleY = y / scale * frequency;
 
-                    //gives range that can be negative
                     float perlinValue = Mathf.PerlinNoise(sampleX, sampleY)*2-1;
 
                     noiseHeight += perlinValue * amplitude;
@@ -35,7 +34,6 @@ public static class Noise {  // were not attaching this to any object, no need M
                     amplitude *= persistance;
                     frequency *= lacunarity;
                 }
-                //range 0-1
                 if(noiseHeight > maxNoiseHeight){
                     maxNoiseHeight = noiseHeight;
                 }
@@ -45,7 +43,7 @@ public static class Noise {  // were not attaching this to any object, no need M
                 noiseMap[x, y] = noiseHeight;
             }
         }
-
+        
         //normalize our noiseMap and happily return it
         for(int y =0; y < mapHeight; y++)
         {
