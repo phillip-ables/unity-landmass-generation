@@ -3,9 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Noise {  // were not attaching this to any object, no need MonoBehaviour
-    public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, float scale, int octaves, float persistance, float lacunarity)
+    public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity)//existence presisted
     {
         float[,] noiseMap = new float[mapWidth, mapHeight];
+
+        //psuedo random number generator
+        System.Random prng = new System.Random(seed);
+        //Each octave to be sampled from a different location
+        //create an array of Vec2
+        Vector2[] octaveOffsets = new Vector2[octaves];
+        for(int i=0; i< octaves; i++)
+        {
+            //if Mathf.perlinNoise coordinate thats too hight
+            //keeps returning same number over&over again
+            float offsetX = prng.Next(-100000, 100000); //range
+            float offsetY = prng.Next(-100000, 100000);
+        }
 
         if (scale <= 0)
             scale = 0.0001f;
