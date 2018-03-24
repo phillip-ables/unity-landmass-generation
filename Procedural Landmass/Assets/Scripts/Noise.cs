@@ -16,10 +16,11 @@ public static class Noise {  // were not attaching this to any object, no need M
         {
             //if Mathf.perlinNoise coordinate thats too hight
             //keeps returning same number over&over again
-            float offsetX = prng.Next(-100000, 100000) + offset.x; //range
-            float offsetY = prng.Next(-100000, 100000) + offset.y;
+            float offsetX = prng.Next(-100000, 100000) + offset.x; // range
+            float offsetY = prng.Next(-100000, 100000) + offset.y; // when calculating add offsets
 
-            octaveOffsets[i] = new Vector2(offsetX, offsetY);        }
+            octaveOffsets[i] = new Vector2(offsetX, offsetY);
+        }
 
         if (scale <= 0)
             scale = 0.0001f;
