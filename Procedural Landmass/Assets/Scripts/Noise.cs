@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Noise {  // were not attaching this to any object, no need MonoBehaviour
-    public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity)//existence presisted
+    public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity, Vector2 offset)//existence presisted
     {
         float[,] noiseMap = new float[mapWidth, mapHeight];
 
@@ -16,9 +16,10 @@ public static class Noise {  // were not attaching this to any object, no need M
         {
             //if Mathf.perlinNoise coordinate thats too hight
             //keeps returning same number over&over again
-            float offsetX = prng.Next(-100000, 100000); //range
-            float offsetY = prng.Next(-100000, 100000);
-        }
+            float offsetX = prng.Next(-100000, 100000) + offset.x; //range
+            float offsetY = prng.Next(-100000, 100000) + offset.y;
+
+            octaveOffsets[i] = new Vector2(offsetX, offsetY);        }
 
         if (scale <= 0)
             scale = 0.0001f;
@@ -37,8 +38,8 @@ public static class Noise {  // were not attaching this to any object, no need M
 
                 for (int i=0; i < octaves; i++)
                 {
-                    float sampleX = x / scale * frequency;
-                    float sampleY = y / scale * frequency;
+                    float sampleX = x / scale * frequency + octaveOffsets[i].x;
+                    float sampleY = y / scale * frequency + octaveOffsets[i].y;
 
                     float perlinValue = Mathf.PerlinNoise(sampleX, sampleY)*2-1;
 
