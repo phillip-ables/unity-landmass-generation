@@ -9,6 +9,7 @@ public class MapGenerator : MonoBehaviour {
     public float noiseScale;
 
     public int octaves;
+    [Range(0,1)]
     public float persistance;
     public float lacunarity;
 
