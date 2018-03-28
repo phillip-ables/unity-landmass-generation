@@ -149,6 +149,13 @@ MonoBehaviour:
   lacunarity: 1.87
   seed: 21
   offset: {x: 0, y: 0}
+  regions:
+  - name: Water
+    height: 0.4
+    color: {r: 0.21875, g: 0.33189657, b: 0.875, a: 0}
+  - name: Land
+    height: 1
+    color: {r: 0.17901169, g: 0.5661765, b: 0.2778054, a: 0}
 --- !u!4 &521890168
 Transform:
   m_ObjectHideFlags: 0
