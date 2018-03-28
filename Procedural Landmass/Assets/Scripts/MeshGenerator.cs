@@ -7,13 +7,21 @@ public static class MeshGenerator
     {
         int width = heightMap.GetLength(0);
         int height = heightMap.GetLength(1);
+        //we want our map to be centered around x =0 left -1 right 1
+        float topLeftX = (width - 1) / -2f;
+        float topLeftZ = (height-1)/ 2f;
+
+
+        MeshData meshData = new MeshData(width, height);
+        int vertexIndex = 0;
 
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                //start creating our verticix
-            }
+                meshData.vertices[vertexIndex] = new Vector3(topLeftX + x, heightMap[x, y], topLeftZ -y);
+                vertexIndex++;
+            } 
         }
     }
 }
