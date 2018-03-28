@@ -17,3 +17,15 @@ public static class MeshGenerator
         }
     }
 }
+
+public class MeshData
+{
+    public Vector3[] vertices;
+    public int[] triangles;
+
+    public MeshData(int meshWidth, int meshHeight)
+    {
+        vertices = new Vector3[meshWidth * meshHeight];
+        triangles = new int[(meshWidth - 1) * (meshHeight - 1) * 6];
+    }
+}
