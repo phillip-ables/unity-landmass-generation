@@ -20,6 +20,7 @@ public static class MeshGenerator
             for (int x = 0; x < width; x++)
             {
                 meshData.vertices[vertexIndex] = new Vector3(topLeftX + x, heightMap[x, y], topLeftZ - y);
+                meshData.uvs[vertexIndex] = new Vector2(x / (float)width, y / height);
 
                 if (x < width - 1 && y < height - 1)//ignoring the right and bottom
                 {
@@ -36,6 +37,7 @@ public class MeshData
 {
     public Vector3[] vertices;
     public int[] triangles;
+    public Vector2[] uvs;
 
     int triangleIndex;
 
@@ -43,6 +45,7 @@ public class MeshData
     public MeshData(int meshWidth, int meshHeight)
     {
         vertices = new Vector3[meshWidth * meshHeight];
+        uvs = new Vector2[meshWidth * meshHeight];
         triangles = new int[(meshWidth - 1) * (meshHeight - 1) * 6];
     }
 
