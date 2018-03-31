@@ -144,12 +144,12 @@ MonoBehaviour:
   drawMode: 1
   mapWidth: 100
   mapHeight: 100
-  noiseScale: 27.5
-  octaves: 4
-  persistance: 0.5
-  lacunarity: 1.78
-  seed: 21
-  offset: {x: 0, y: 0}
+  noiseScale: 45
+  octaves: 2
+  persistance: 0.725
+  lacunarity: 1.7
+  seed: 0
+  offset: {x: 1111, y: 1111}
   regions:
   - name: Water
     height: 0.4

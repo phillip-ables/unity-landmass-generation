@@ -3,7 +3,7 @@ using System.Collections;
 
 public static class MeshGenerator
 {
-    public static void GenerateTerrainMesh(float[,] heightMap)
+    public static MeshData GenerateTerrainMesh(float[,] heightMap)
     {
         int width = heightMap.GetLength(0);
         int height = heightMap.GetLength(1);
@@ -30,9 +30,10 @@ public static class MeshGenerator
                 vertexIndex++;
             } 
         }
+        return meshData;
     }
 }
-
+ 
 public class MeshData
 {
     public Vector3[] vertices;
@@ -55,5 +56,16 @@ public class MeshData
         triangles[triangleIndex+1] = b;
         triangles[triangleIndex+2] = c;
         triangleIndex += 3;
+    }
+
+    public Mesh CreateMesh()
+    {
+        Mesh mesh = new Mesh();
+        mesh.vertices = vertices;
+        mesh.triangles = triangles;
+        mesh.uv = uvs;
+        mesh.RecalculateNormals();
+
+        return mesh;
     }
 }
