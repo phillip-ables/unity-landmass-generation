@@ -19,7 +19,13 @@ public static class MeshGenerator
         {
             for (int x = 0; x < width; x++)
             {
-                meshData.vertices[vertexIndex] = new Vector3(topLeftX + x, heightMap[x, y], topLeftZ -y);
+                meshData.vertices[vertexIndex] = new Vector3(topLeftX + x, heightMap[x, y], topLeftZ - y);
+
+                if (x < width - 1 && y < height - 1)//ignoring the right and bottom
+                {
+                    meshData.AddTriangle(vertexIndex, vertexIndex + width + 1, vertexIndex + width);
+                    meshData.AddTriangle(vertexIndex + width + 1, vertexIndex, vertexIndex + 1);
+                }
                 vertexIndex++;
             } 
         }
@@ -32,6 +38,7 @@ public class MeshData
     public int[] triangles;
 
     int triangleIndex;
+
 
     public MeshData(int meshWidth, int meshHeight)
     {
